@@ -4,6 +4,7 @@ import { getAllYearDaysUntilNow } from "../utils/get-all-year-days-until-now";
 
 import { DAY_SIZE, HabitDay } from "../components/HabitDay";
 import { Header } from "../components/Header";
+import { useNavigation } from "@react-navigation/native";
 
 const weekdays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
 const daysFromYearStart = getAllYearDaysUntilNow();
@@ -11,6 +12,7 @@ const minimumSummaryDays = 18 * 5;
 const amountOfDaysToFill = minimumSummaryDays - daysFromYearStart.length;
 
 export function Home() {
+    const { navigate } = useNavigation();
     return (
         <View className="flex-1 bg-background px-8 pt-16">
             <Header />
@@ -38,6 +40,7 @@ export function Home() {
                         daysFromYearStart.map(date => (
                             <HabitDay
                                 key={date.toISOString()}
+                                onPress={() => navigate('habit', { date: date.toISOString() })}
                             />
                         ))
                     }
