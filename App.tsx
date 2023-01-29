@@ -1,12 +1,12 @@
 import './src/lib/dayjs';
 import { StatusBar } from 'expo-status-bar';
-import { 
+import {
   useFonts,
   Inter_400Regular,
   Inter_600SemiBold,
   Inter_700Bold,
   Inter_800ExtraBold
-} from '@expo-google-fonts/inter'; 
+} from '@expo-google-fonts/inter';
 
 import Loading from './src/components/Loading';
 import { Routes } from './src/routes';
@@ -20,15 +20,13 @@ export default function App() {
   });
 
   if (!fontsLoaded) {
-    return (
-      <Loading />
-    );
+    return <Loading />;
   }
 
   return (
     <>
       <Routes />
-      <StatusBar backgroundColor='transparent' translucent />
+      <StatusBar backgroundColor="transparent" translucent />
     </>
   );
 }
