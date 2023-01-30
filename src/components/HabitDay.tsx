@@ -29,12 +29,12 @@ export function HabitDay({ available = 0, completed = 0, date, ...rest }: Props)
         ['bg-violet-900 border-violet-700']:
           accomplishedPercentage > 0 && accomplishedPercentage < 20,
         ['bg-violet-800 border-violet-600']:
-          accomplishedPercentage > 20 && accomplishedPercentage < 40,
+          accomplishedPercentage >= 20 && accomplishedPercentage < 40,
         ['bg-violet-700 border-violet-500']:
-          accomplishedPercentage > 40 && accomplishedPercentage < 60,
+          accomplishedPercentage >= 40 && accomplishedPercentage < 60,
         ['bg-violet-600 border-violet-500']:
-          accomplishedPercentage > 60 && accomplishedPercentage < 80,
-        ['bg-violet-500 border-violet-400']: accomplishedPercentage > 80,
+          accomplishedPercentage >= 60 && accomplishedPercentage < 80,
+        ['bg-violet-500 border-violet-400']: accomplishedPercentage >= 80,
         ['border-white border-3']: isCurrentDay
       })}
       style={{ width: DAY_SIZE, height: DAY_SIZE }}

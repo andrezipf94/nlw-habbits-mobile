@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
 import { api } from '../lib/axios';
 import { getAllYearDaysUntilNow } from '../utils/get-all-year-days-until-now';
@@ -7,7 +7,7 @@ import { getAllYearDaysUntilNow } from '../utils/get-all-year-days-until-now';
 import { DAY_SIZE, HabitDay } from '../components/HabitDay';
 import { Header } from '../components/Header';
 import Loading from '../components/Loading';
-import { useEffect, useState } from 'react';
+import { useState, useCallback } from 'react';
 import dayjs from 'dayjs';
 
 const weekdays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
@@ -40,9 +40,11 @@ export function Home() {
     }
   }
 
-  useEffect(() => {
-    fetchSummary();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      fetchSummary();
+    }, [])
+  );
 
   if (loading) {
     return <Loading />;
